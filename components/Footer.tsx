@@ -79,9 +79,9 @@ export default function Footer() {
                   className="mt-1 text-orange-400"
                 />
                 <p className="text-gray-300">
-                  123 Coffee Street
+                   123 colony
                   <br />
-                  Darbhanga, Bihar
+                  district,state,india
                 </p>
               </div>
 
@@ -91,7 +91,7 @@ export default function Footer() {
                   className="text-orange-400"
                 />
                 <p className="text-gray-300">
-                  +91 98765 43210
+                  +91 xxxxxxxxxx
                 </p>
               </div>
 
@@ -101,7 +101,7 @@ export default function Footer() {
                   className="text-orange-400"
                 />
                 <p className="text-gray-300">
-                  hello@brewhaven.com
+                  kumarwinayak3@gmail.com
                 </p>
               </div>
 
