@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://brewhaven.vercel.app"),
+  metadataBase: new URL("https://cafe-brew-haven-nine.vercel.app"),
 
   title: {
     default: "Brew Haven | Premium Café",
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     description:
       "Fresh coffee, delicious food, and a cozy café experience.",
 
-    url: "https://brewhaven.vercel.app",
+    url: "https://cafe-brew-haven-nine.vercel.app",
 
     siteName: "Brew Haven",
 
@@ -76,6 +77,8 @@ export default function RootLayout({
     >
       <body className="min-h-full font-sans overflow-x-hidden">
         {children}
+
+        <Analytics />
       </body>
     </html>
   );
