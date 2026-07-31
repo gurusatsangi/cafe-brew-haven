@@ -23,6 +23,9 @@ type CartContextType = {
   increaseQuantity: (id: number | string) => void;
   decreaseQuantity: (id: number | string) => void;
   clearCart: () => void;
+  isCartOpen: boolean;
+  openCart: () => void;
+  closeCart: () => void;
   totalItems: number;
   totalPrice: number;
 };
@@ -35,6 +38,15 @@ export function CartProvider({
   children: ReactNode;
 }) {
     const [cart, setCart] = useState<CartItem[]>([]);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
+    function openCart() {
+      setIsCartOpen(true);
+    }
+
+    function closeCart() {
+      setIsCartOpen(false);
+    }
 
     useEffect(() => {
     const saved = localStorage.getItem("brew-haven-cart");
@@ -115,6 +127,9 @@ export function CartProvider({
         clearCart,
         totalItems,
         totalPrice,
+        isCartOpen,
+        openCart,
+        closeCart,
       }}
     >
       {children}

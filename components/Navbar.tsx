@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, ShoppingCart, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-import CartDrawer from "./CartDrawer";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,9 +16,8 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
 
-  const { totalItems } = useCart();
+  const { totalItems, openCart } = useCart();
   return (
     <header className="sticky top-0 z-50 border-b border-orange-100 bg-[#FFF9F5]/90 backdrop-blur-xl shadow-sm rounded-b-2xl">
       <nav className="max-w-7xl mx-auto h-16 lg:h-[72px] px-6 flex items-center justify-between">
@@ -57,7 +55,7 @@ export default function Navbar() {
           })}
         </ul>
           <button
-            onClick={() => setCartOpen(true)}
+            onClick={openCart}
             className="relative hidden md:flex items-center justify-center rounded-xl p-3 transition hover:bg-orange-100"
           >
             <ShoppingCart size={28} />
@@ -144,7 +142,7 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  setCartOpen(true);
+                  openCart();
                 }}
                 className="relative mt-auto flex items-center justify-center gap-2 rounded-xl border border-orange-200 py-4 text-lg font-semibold text-orange-600"
               >
@@ -165,10 +163,6 @@ export default function Navbar() {
         </>
       )}
 
-        <CartDrawer
-          open={cartOpen}
-          onClose={() => setCartOpen(false)}
-        />
     </header>
   );
 }

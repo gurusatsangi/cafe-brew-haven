@@ -1,22 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import CartDrawer from "./CartDrawer";
 import FloatingCart from "./FloatingCart";
+import CartDrawer from "./CartDrawer";
+import { useCart } from "@/context/CartContext";
 
 export default function CartOverlay() {
-  const [cartOpen, setCartOpen] = useState(false);
+  const {
+    isCartOpen,
+    openCart,
+    closeCart,
+  } = useCart();
 
   return (
     <>
       <FloatingCart
-        open={cartOpen}
-        onClick={() => setCartOpen(true)}
-        />
+        open={isCartOpen}
+        onClick={openCart}
+      />
 
       <CartDrawer
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
+        open={isCartOpen}
+        onClose={closeCart}
       />
     </>
   );
