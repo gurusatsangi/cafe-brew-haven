@@ -92,7 +92,7 @@ export default function ReservationDrawer({
       />
 
       {/* Drawer */}
-      <aside className="fixed right-0 top-0 z-50 flex h-screen w-full max-w-md flex-col bg-white shadow-2xl">
+      <aside className="fixed inset-y-0 right-0 z-50 flex h-dvh w-full max-w-md flex-col bg-white shadow-2xl">
 
         {/* Header */}
         <div className="flex items-center justify-between border-b p-5">
@@ -106,7 +106,7 @@ export default function ReservationDrawer({
         </div>
 
         {/* Scroll Area */}
-        <div className="flex-1 overflow-y-auto p-5">
+        <div className="flex-1 overflow-y-auto p-5 pb-8">
 
           <h3 className="text-3xl font-bold">
             {table.name}
@@ -238,25 +238,27 @@ export default function ReservationDrawer({
                 className="w-full rounded-xl border border-gray-300 px-4 py-3 resize-none"
                 />
             </div>
-            {step === 1 && (
-                <button
-                    onClick={() => {
-                    if (!name.trim() || !phone.trim() || !date || !time) {
-                        alert("Please fill all required fields.");
-                        return;
-                    }
-
-                    setStep(2);
-                    }}
-                    className="mt-6 w-full rounded-xl bg-orange-600 py-3 font-semibold text-white transition hover:bg-orange-700"
-                >
-                    Continue
-                </button>
-                )}
             </>
             )}
 
         </div>
+        {step === 1 && (
+          <div className="border-t bg-white p-5">
+            <button
+              onClick={() => {
+                if (!name.trim() || !phone.trim() || !date || !time) {
+                  alert("Please fill all required fields.");
+                  return;
+                }
+
+                setStep(2);
+              }}
+              className="w-full rounded-xl bg-orange-600 py-3 font-semibold text-white transition hover:bg-orange-700"
+            >
+              Continue
+            </button>
+          </div>
+        )}
 
         {/* Bottom Summary */}
             {step === 2 && (
